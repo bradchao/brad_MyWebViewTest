@@ -1,5 +1,10 @@
 package brad.tw.mywebviewtest;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +21,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (Build.VERSION.SDK_INT>=23) {
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        1);
+            }
+        }
 
         myname = (EditText)findViewById(R.id.myname);
         webview = (WebView)findViewById(R.id.webview);
@@ -44,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void test2(View v){
         //webview.goForward();
+        webview.loadUrl("javascript:moveTo(24.150544,120.683169)");
     }
 
 
