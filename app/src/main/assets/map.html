@@ -18,6 +18,10 @@ function initMap() {
   });
 }
 
+function moveTo(newlat, newlng){
+    map.setCenter({lat: newlat, lng: newlng});
+}
+
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?callback=initMap">
