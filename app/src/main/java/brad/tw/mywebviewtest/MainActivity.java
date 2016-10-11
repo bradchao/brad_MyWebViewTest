@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setJavaScriptEnabled(true);
 
         //webview.loadUrl("http://www.yahoo.com");
-        webview.loadUrl("file:///android_asset/brad.html");
+        webview.loadUrl("file:///android_asset/map.html");
     }
 
     public void test1(View v){
