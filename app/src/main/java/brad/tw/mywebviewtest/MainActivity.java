@@ -10,7 +10,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -90,12 +92,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public class BradJS {
+        @JavascriptInterface
+        public void showPos(String newpos){
+            Log.v("brad", "ret => " + newpos );
+        }
+    }
+
+
     private void initWebView(){
         WebViewClient client = new WebViewClient();
         webview.setWebViewClient(client);
 
         WebSettings settings = webview.getSettings();
         settings.setJavaScriptEnabled(true);
+
+        webview.addJavascriptInterface(new BradJS(),"brad");
 
         //webview.loadUrl("http://www.yahoo.com");
         webview.loadUrl("file:///android_asset/map.html");
