@@ -2,7 +2,9 @@ package brad.tw.mywebviewtest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
     private WebView webview;
@@ -18,7 +20,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initWebView(){
-        webview.loadUrl("http://www.pchome.com.tw");
+        WebViewClient client = new WebViewClient();
+        webview.setWebViewClient(client);
+
+
+        //webview.loadUrl("http://www.yahoo.com");
+        webview.loadUrl("file:///android_asset/brad.html");
     }
+
+    public void test1(View v){
+        //webview.goBack();
+        //webview.reload();
+    }
+    public void test2(View v){
+        //webview.goForward();
+    }
+
 
 }
